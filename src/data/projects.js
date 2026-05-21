@@ -31,5 +31,20 @@ export const projects = [
     ],
     github: "https://github/shaik-anif/image-steganography-app",
     demo: "#"
+  },
+  {
+    id: 3,
+    title: "RESTful Blog Platform API",
+    description: "A feature-rich blog backend with user authentication, role-based access, post CRUD, and paginated search using Spring Boot and PostgreSQL.",
+    image: orderImg,
+    tech: ["Java", "Spring Boot", "PostgreSQL", "JWT"],
+    features: [
+      "JWT-based authentication with refresh token rotation",
+      "Role-based access control for authors and admins",
+      "Full CRUD with pagination and keyword search",
+      "PostgreSQL with indexed queries for fast retrieval"
+    ],
+    github: "https://github.com/shaik-anif",
+    demo: "#"
   }
 ];

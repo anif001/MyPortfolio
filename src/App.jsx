@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -12,6 +12,50 @@ import Certifications from './sections/Certifications';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
+function Particles({ count = 25 }) {
+  const particles = useMemo(() => {
+    return Array.from({ length: count }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 1.5,
+      duration: Math.random() * 15 + 15,
+      delay: Math.random() * 5,
+      opacity: Math.random() * 0.15 + 0.04,
+    }));
+  }, [count]);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: p.size,
+            height: p.size,
+            opacity: p.opacity,
+            background: `radial-gradient(circle, rgba(133,138,227,0.4), transparent 70%)`,
+          }}
+          animate={{
+            y: [0, -30, 0, 20, 0],
+            x: [0, 15, -10, 5, 0],
+            opacity: [p.opacity, p.opacity * 1.5, p.opacity, p.opacity * 0.8, p.opacity],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -19,30 +63,20 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
-    // Simulate initial loading
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 2400);
 
-    // Track mouse coordinates for background glow
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
-    // Track scroll events
     const handleScroll = () => {
-      // 1. Scroll Progress Percentage
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (totalScroll > 0) {
         setScrollProgress((window.scrollY / totalScroll) * 100);
       }
-
-      // 2. Show Back-To-Top Button
-      if (window.scrollY > 500) {
-        setShowBackToTop(true);
-      } else {
-        setShowBackToTop(false);
-      }
+      setShowBackToTop(window.scrollY > 500);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -56,66 +90,79 @@ export default function App() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
-      {/* Dynamic Loader Screen */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {loading && (
           <motion.div
             key="loader"
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="fixed inset-0 bg-[#030014] z-[9999] flex flex-col items-center justify-center"
+            exit={{ opacity: 0, filter: "blur(6px)", scale: 1.05 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 bg-[#050505] z-[9999] flex flex-col items-center justify-center"
           >
             <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="text-4xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-500 to-indigo-400 bg-clip-text text-transparent font-poppins mb-6"
+              initial={{ opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute w-80 h-80 bg-[#858AE3]/8 rounded-full blur-[130px]"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.4 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute w-96 h-96 bg-[#613DC1]/5 rounded-full blur-[150px]"
+            />
+
+            <motion.div
+              initial={{ filter: "blur(14px)", opacity: 0, letterSpacing: "0.4em" }}
+              animate={{ filter: "blur(0px)", opacity: 1, letterSpacing: "0.12em" }}
+              transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className="text-4xl sm:text-5xl font-bold font-poppins mb-10 relative"
             >
-              Anif<span className="text-violet-500">.</span>
+              <span className="bg-gradient-to-r from-[#858AE3] via-[#613DC1] to-[#97DFFC] bg-clip-text text-transparent">
+                SHAIK ANIF
+              </span>
+              <span className="text-[#97DFFC]">.</span>
             </motion.div>
-            
-            {/* Custom glowing progress bar */}
-            <div className="w-56 h-1.5 bg-white/5 rounded-full overflow-hidden relative">
-              <motion.div
-                initial={{ left: "-100%" }}
-                animate={{ left: "100%" }}
-                transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
-                className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full"
-              />
-            </div>
+
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="h-[2px] w-48 bg-gradient-to-r from-[#858AE3]/40 via-[#858AE3] to-[#97DFFC] rounded-full origin-left"
+              style={{ transformOrigin: "left" }}
+            />
           </motion.div>
         )}
       </AnimatePresence>
 
       {!loading && (
-        <div className="relative min-h-screen text-slate-100 selection:bg-violet-500/30 selection:text-white">
-          {/* Scroll Progress Bar */}
-          <div 
-            className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-violet-500 via-fuchsia-500 to-indigo-500 z-[999] transition-all duration-75 ease-out"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative min-h-screen text-slate-200 selection:bg-[#858AE3]/30 selection:text-white"
+        >
+          <Particles />
+
+          <div
+            className="scroll-indicator"
             style={{ width: `${scrollProgress}%` }}
           />
 
-          {/* Mouse cursor glow background layer */}
-          <div 
+          <div
             className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300 hidden md:block"
             style={{
-              background: `radial-gradient(550px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(139, 92, 246, 0.075), transparent 85%)`
+              background: `radial-gradient(550px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(133, 138, 227, 0.06), transparent 85%)`
             }}
           />
 
-          {/* Navigation Bar */}
           <Navbar />
 
-          {/* Page Sections */}
           <main>
             <Hero />
             <About />
@@ -126,10 +173,8 @@ export default function App() {
             <Contact />
           </main>
 
-          {/* Footer */}
           <Footer />
 
-          {/* Back-To-Top Button */}
           <AnimatePresence>
             {showBackToTop && (
               <motion.button
@@ -138,14 +183,14 @@ export default function App() {
                 exit={{ opacity: 0, scale: 0.5, y: 20 }}
                 transition={{ duration: 0.3 }}
                 onClick={scrollToTop}
-                className="fixed bottom-6 right-6 z-40 w-12 h-12 flex items-center justify-center rounded-xl bg-violet-600 hover:bg-violet-500 text-white shadow-[0_4px_15px_rgba(139,92,246,0.4)] hover:shadow-[0_4px_25px_rgba(139,92,246,0.6)] border border-violet-400/20 hover:-translate-y-1 transition-all duration-300 focus:outline-none"
+                className="fixed bottom-6 right-6 z-40 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-[#613DC1] to-[#858AE3] hover:from-[#858AE3] hover:to-[#97DFFC] text-white shadow-[0_4px_20px_rgba(133,138,227,0.3)] hover:shadow-[0_4px_30px_rgba(133,138,227,0.5)] border border-[#858AE3]/20 hover:-translate-y-1 transition-all duration-300 focus:outline-none"
                 aria-label="Scroll back to top"
               >
                 <FaArrowUp size={16} />
               </motion.button>
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
       )}
     </>
   );

@@ -25,20 +25,21 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-white/5 bg-[#030014]/80 py-12 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        
-        {/* Brand */}
+    <footer className="border-t border-white/5 bg-space-darker/80 py-12 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+
         <div className="text-center md:text-left">
-          <a href="#home" className="text-xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-500 to-indigo-400 bg-clip-text text-transparent font-poppins">
-            SHAIK ANIF<span className="text-violet-500">.</span>
+          <a href="#home" className="text-xl font-bold font-poppins">
+            <span className="bg-gradient-to-r from-[#858AE3] to-[#97DFFC] bg-clip-text text-transparent">
+              SHAIK ANIF
+            </span>
+            <span className="text-[#97DFFC]">.</span>
           </a>
           <p className="text-slate-500 text-xs mt-1.5 font-medium">
             Backend & Full Stack Engineer
           </p>
         </div>
 
-        {/* Info */}
         <div className="text-center">
           <p className="text-slate-400 text-sm">
             &copy; {currentYear} Shaik Anif. All rights reserved.
@@ -48,7 +49,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Social Icons */}
         <div className="flex items-center gap-3">
           {socialsList.map((soc) => (
             <a
@@ -56,7 +56,7 @@ export default function Footer() {
               href={soc.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-violet-600 hover:border-violet-500 transition-all duration-300"
+              className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-[#613DC1] hover:border-[#858AE3] transition-all duration-300"
               aria-label={soc.name}
             >
               {getSocialIcon(soc.name)}

@@ -1,11 +1,11 @@
 export const certifications = [
   {
     id: 1,
-    title: "Java Certification",
-    issuer: "GFG",
+    title: "Java Certification (NPTEL)",
+    issuer: "NPTEL",
     date: "2026",
     link: "#",
-    description: "In-depth validation of Java programming fundamentals, Object-Oriented Programming (OOP) concepts, data structures, and algorithms."
+    description: "In-depth validation of Java programming fundamentals, Object-Oriented Programming (OOP) concepts, data structures, and algorithms, certified by elite academic institutions."
   },
   {
     id: 2,
