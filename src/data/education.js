@@ -7,5 +7,4 @@ export const education = [
     period: "2023 – 2027",
     description: "Specializing in software engineering, backend architectures, algorithms, and secure system design. Actively participating in coding contests and developer hackathons."
   },
-
 ];

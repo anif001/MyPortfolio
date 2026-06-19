@@ -1,6 +1,4 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { FaServer, FaCode, FaDatabase } from 'react-icons/fa';
 import { personalInfo } from '../data/socials';
 
 const skills = [
@@ -38,46 +36,6 @@ function SkillBar({ label, percentage, index }) {
 }
 
 export default function About() {
-  const cards = [
-    {
-
-
-      id: 1,
-      icon: <FaServer className="text-[#858AE3] text-2xl" />,
-      title: "Backend Architectures",
-      desc: "Designing secure, thread-safe REST APIs and microservices using Java and Spring Boot."
-    },
-    {
-      id: 2,
-      icon: <FaDatabase className="text-[#97DFFC] text-2xl" />,
-      title: "Database Optimization",
-      desc: "Building relational database schemas in PostgreSQL/MySQL with optimized indexing and transactions."
-    },
-    {
-      id: 3,
-      icon: <FaCode className="text-[#613DC1] text-2xl" />,
-      title: "Full Stack Mastery",
-      desc: "Combining robust backend logic with responsive, animated React interfaces."
-    }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 25 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 100, damping: 16 }
-    }
-  };
-
   return (
     <section id="about" className="py-24 px-6 relative overflow-hidden bg-space-darker/20">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#858AE3]/3 rounded-full blur-[160px] -z-10" />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCertificate, FaGithub, FaLinkedin, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';

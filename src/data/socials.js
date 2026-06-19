@@ -13,30 +13,6 @@ export const personalInfo = {
   contactEmail: "shaikanif0423@gmail.com"
 };
 
-export const socials = [
-  {
-    name: "GitHub",
-    url: "https://github.com/anif001",
-    iconName: "FaGithub",
-    color: "hover:text-[#FFFFFF] hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]"
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/anifshaik001/",
-    iconName: "FaLinkedin",
-    color: "hover:text-[#0077b5] hover:shadow-[0_0_15px_rgba(0,119,181,0.4)]"
-  },
-  {
-    name: "LeetCode",
-    url: "https://leetcode.com/u/anif__001/",
-    iconName: "SiLeetcode",
-    color: "hover:text-[#ffa116] hover:shadow-[0_0_15px_rgba(255,161,22,0.4)]"
-  }
-];
-
 export const contactConfig = {
-  formspreeUrl: "https://formspree.io/f/mdknvqwe", 
-  emailJsServiceId: "",
-  emailJsTemplateId: "",
-  emailJsPublicKey: ""
+  formspreeUrl: "https://formspree.io/f/mdknvqwe",
 };

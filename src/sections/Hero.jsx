@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
@@ -33,8 +33,10 @@ const TypingEffect = ({ words }) => {
           setCurrentText(fullWord.substring(0, currentText.length - 1));
         }, deletingSpeed);
       } else {
-        setIsDeleting(false);
-        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+        }, 50);
       }
     }
 

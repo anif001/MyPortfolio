@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaEnvelope, FaUser, FaPaperPlane, FaSpinner, FaCheckCircle, FaExclamationTriangle, FaDownload } from 'react-icons/fa';
 import { contactConfig, personalInfo } from '../data/socials';
@@ -58,7 +58,7 @@ export default function Contact() {
         setStatus('error');
         setStatusMessage('Something went wrong. Please try again or email me directly.');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
       setStatusMessage('Failed to connect to the server. Please check your internet connection.');
     }

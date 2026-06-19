@@ -1,7 +1,6 @@
-import React from 'react';
 import { 
   FaJava, FaPython, FaJs, FaReact, FaHtml5, FaCss3, 
-  FaGitAlt, FaGithub, FaDatabase, FaServer, FaCode, 
+  FaGitAlt, FaGithub, FaDatabase, FaServer, 
   FaCube, FaCompass, FaLaptopCode, FaNetworkWired 
 } from 'react-icons/fa';
 import { 

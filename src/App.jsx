@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaArrowUp } from 'react-icons/fa';
 
@@ -13,17 +13,26 @@ import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
 function Particles({ count = 25 }) {
-  const particles = useMemo(() => {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 1.5,
-      duration: Math.random() * 15 + 15,
-      delay: Math.random() * 5,
-      opacity: Math.random() * 0.15 + 0.04,
-    }));
+  const [particles, setParticles] = useState([]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setParticles(
+        Array.from({ length: count }, (_, i) => ({
+          id: i,
+          x: Math.random() * 100,
+          y: Math.random() * 100,
+          size: Math.random() * 4 + 1.5,
+          duration: Math.random() * 15 + 15,
+          delay: Math.random() * 5,
+          opacity: Math.random() * 0.15 + 0.04,
+        }))
+      );
+    }, 0);
+    return () => clearTimeout(timer);
   }, [count]);
+
+  if (particles.length === 0) return null;
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
