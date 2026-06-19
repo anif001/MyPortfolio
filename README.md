@@ -14,6 +14,15 @@ Modern developer portfolio built using React.js, Tailwind CSS, and Framer Motion
 - Tailwind CSS
 - Framer Motion
 - Vite
+## 🌐 Connect With Me
 
-## Live Demo
-https://my-portfolio-mauve-one-11.vercel.app/
+<a href="https://www.linkedin.com/in/anifshaik001" target="_blank">
+  LinkedIn
+</a> •
+<a href="https://my-portfolio-mauve-one-11.vercel.app/" target="_blank">
+  Portfolio
+</a> •
+<a href="mailto:shaikanif0423@gmail.com">
+  Email
+</a>
+
