@@ -14,5 +14,5 @@ export const personalInfo = {
 };
 
 export const contactConfig = {
-  formspreeUrl: "https://formspree.io/f/mdknvqwe",
+  formspreeUrl: "https://formspree.io/f/mwvjddeb",
 };
